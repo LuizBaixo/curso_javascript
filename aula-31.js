@@ -38,18 +38,6 @@ const lista = [
     },
 ]
 
-// const pessoa = {
-//     jose: {
-//         idade: 54,
-//     },
-//     joao: {
-//         idade: 65,
-//     },
-//     maria: {
-//         idade: 23
-//     }
-// }
-
 const funcaoReduce = (acc, objeto) => {
     return {
         ...acc,
@@ -61,11 +49,15 @@ const funcaoReduce = (acc, objeto) => {
 
 const pessoas = lista.reduce(funcaoReduce, {});
 
-const pessoasArray = lista.reduce((acc, objeto) => {
-    acc.push(objeto.idade);
-    return acc;
-}, []);
+const chaves = Object.keys(pessoas);
 
-console.log(pessoas);
-console.log(pessoas.Gustavo.idade);
-console.log(pessoasArray);
+const listaDeVolta = chaves.map((chave) => ({ 
+    nome: chave,
+    idade: pessoas[chave].idade
+}))
+
+// console.log(pessoas);
+
+// console.log(chaves);
+
+console.log(listaDeVolta);
